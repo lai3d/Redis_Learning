@@ -12,6 +12,7 @@ namespace _00_HelloWorld
     {
         static void Main(string[] args)
         {
+            // connect to a redis server in Docker on Windows 10 to do the test
             ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("localhost:32768");
 
             Console.WriteLine("Redis ClientName: {0}", redis.ClientName);
@@ -23,6 +24,8 @@ namespace _00_HelloWorld
 
             string valueString = db.StringGet("mykey");
             Console.WriteLine(valueString); // writes: "abcdefg"
+
+            //=================================================
 
             ISubscriber sub = redis.GetSubscriber();
 
